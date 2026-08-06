@@ -5,7 +5,7 @@ class Solution {
 
         for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == ' ') {
-                if (i + 1 < last) { // Word exists
+                if (i + 1 < last) { 
                     if (ans.length() > 0) ans.append(" ");
                     ans.append(s.substring(i + 1, last));
                 }
@@ -13,7 +13,6 @@ class Solution {
             }
         }
 
-        // Add the first word
         if (last > 0) {
             if (ans.length() > 0) ans.append(" ");
             ans.append(s.substring(0, last));
