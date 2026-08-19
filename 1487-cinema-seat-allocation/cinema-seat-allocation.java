@@ -19,12 +19,10 @@ class Solution {
 
             int currentRow = reservedSeats[k][0];
 
-            // Rows with no reservations before this row
             ans += (currentRow - previousRow - 1) * 2;
 
             boolean[] reserved = new boolean[11];
 
-            // Store reservations of current row
             while (k < reservedSeats.length &&
                    reservedSeats[k][0] == currentRow) {
 
@@ -32,11 +30,10 @@ class Solution {
                 k++;
             }
 
-            boolean group1 = true; // 2-5
-            boolean group2 = true; // 4-7
-            boolean group3 = true; // 6-9
+            boolean group1 = true;
+            boolean group2 = true;
+            boolean group3 = true;
 
-            // Check 2-5
             for (int j = 2; j <= 5; j++) {
                 if (reserved[j]) {
                     group1 = false;
@@ -44,7 +41,6 @@ class Solution {
                 }
             }
 
-            // Check 4-7
             for (int j = 4; j <= 7; j++) {
                 if (reserved[j]) {
                     group2 = false;
@@ -52,7 +48,6 @@ class Solution {
                 }
             }
 
-            // Check 6-9
             for (int j = 6; j <= 9; j++) {
                 if (reserved[j]) {
                     group3 = false;
@@ -60,17 +55,14 @@ class Solution {
                 }
             }
 
-            if (group1 && group3) {
+            if (group1 && group3)
                 ans += 2;
-            }
-            else if (group1 || group2 || group3) {
-                ans += 1;
-            }
+            else if (group1 || group2 || group3)
+                ans++;
 
             previousRow = currentRow;
         }
 
-        // Rows after the last reserved row
         ans += (n - previousRow) * 2;
 
         return ans;
